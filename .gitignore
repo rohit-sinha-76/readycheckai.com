@@ -1,0 +1,111 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing & Coverage
+coverage/
+
+# Build & Compiler Artifacts
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+deployments.json
+
+# Keys & Certificates
+*.pem
+*.key
+*.crt
+
+# Environment Variables (Security Critical - Never commit secrets)
+.env
+.env*
+!.env.example
+
+# Vercel & Deployment Caches
+.vercel
+
+# Supabase CLI Local Cache (Preserve migrations & schemas)
+supabase/.branches
+supabase/.temp
+supabase/.cache
+
+# Logs & Diagnostics
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Cache Directories
+.npm
+.eslintcache
+.cache
+.parcel-cache
+.turbo
+.swc
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# IDEs, Editors & AI Agent Directories
+.vscode/
+.idea/
+.gemini/
+.agents/
+*.swp
+*.swo
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Shell & Direnv
+.direnv
+.envrc
+
+# Temporary & Local Quarantine Files
+tmp/
+temp/
+_garbage_quarantine/
+project_work_log.json
+context.md
+context/
+archive/
+backups/
+
+# Excluded Script & Question Folders
+scripts/
+questions/
+resources-docs/
+quistions.txt
+qus.json
+rewrite-history.ps1
+build_*_pattern.mjs
+!next.config.mjs
+!postcss.config.mjs
+all_changed_files.txt
+categorized_files.json
+clean_files.json
+generated_dates.json
+individual_files.json
+
