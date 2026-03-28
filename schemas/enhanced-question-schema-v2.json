@@ -1,0 +1,577 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://readycheckai.com/schemas/question-v2.0.json",
+  "title": "ReadyCheck AI Enhanced Question Schema v2.0",
+  "description": "Unified, scalable question schema for all assessment types",
+  "version": "2.0.0",
+  "type": "object",
+  "required": [
+    "question_key",
+    "question_text", 
+    "question_format",
+    "category",
+    "difficulty",
+    "content"
+  ],
+  "properties": {
+    "_schema_version": {
+      "type": "string",
+      "const": "2.0.0",
+      "description": "Schema version for compatibility checking"
+    },
+    "_metadata": {
+      "type": "object",
+      "description": "Administrative metadata",
+      "properties": {
+        "created_at": {"type": "string", "format": "date-time"},
+        "updated_at": {"type": "string", "format": "date-time"},
+        "created_by": {"type": "string", "description": "Creator ID or name"},
+        "reviewed_by": {"type": "string", "description": "Reviewer ID or name"},
+        "review_status": {
+          "type": "string", 
+          "enum": ["draft", "pending_review", "approved", "published", "archived"],
+          "default": "draft"
+        },
+        "revision_number": {"type": "integer", "minimum": 1, "default": 1},
+        "tags": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Administrative tags for organization"
+        }
+      }
+    },
+    
+    "question_key": {
+      "type": "string",
+      "pattern": "^[A-Z]{2,4}_[A-Z0-9]+_\\d{3,6}$",
+      "description": "Unique identifier: PREFIX_CATEGORY_NUMBER (e.g., RCAI_FUND_001)",
+      "examples": ["RCAI_FUND_001", "RCML_TECH_157", "RCBIZ_ETH_042"]
+    },
+    
+    "question_text": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 2000,
+      "description": "Main question text - supports markdown formatting"
+    },
+    
+    "question_format": {
+      "type": "string",
+      "enum": [
+        "single_choice",
+        "multiple_choice", 
+        "true_false",
+        "fill_in_blank",
+        "essay",
+        "code_completion",
+        "drag_drop",
+        "matching",
+        "ranking",
+        "hotspot",
+        "simulation",
+        "case_study",
+        "scenario_based",
+        "interactive_demo"
+      ],
+      "description": "Question interaction type"
+    },
+    
+    "category": {
+      "type": "object",
+      "required": ["primary", "code"],
+      "properties": {
+        "primary": {
+          "type": "string",
+          "enum": ["fundamentals", "technical", "business", "ethics", "general", "specialized"],
+          "description": "Primary category"
+        },
+        "code": {
+          "type": "string", 
+          "pattern": "^[a-z_]{3,20}$",
+          "description": "Database-compatible category code"
+        },
+        "subcategories": {
+          "type": "array",
+          "items": {"type": "string"},
+          "maxItems": 5,
+          "description": "Detailed subcategory tags"
+        },
+        "skills": {
+          "type": "array",
+          "items": {"type": "string"},
+          "maxItems": 10,
+          "description": "Specific skills being assessed"
+        }
+      }
+    },
+    
+    "difficulty": {
+      "type": "object",
+      "required": ["level", "score"],
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": ["beginner", "intermediate", "advanced", "expert"],
+          "description": "Human-readable difficulty level"
+        },
+        "score": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "description": "Numeric difficulty (1=easiest, 10=hardest)"
+        },
+        "complexity_factors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["multi_step", "requires_analysis", "industry_specific", "time_pressure", "ambiguous_scenario"]
+          },
+          "description": "What makes this question complex"
+        }
+      }
+    },
+    
+    "assessment_config": {
+      "type": "object",
+      "properties": {
+        "question_types": {
+          "type": "array",
+          "items": {"type": "string", "enum": ["practice", "certification", "both"]},
+          "default": ["practice"],
+          "description": "Where this question can be used"
+        },
+        "certification_levels": {
+          "type": "array", 
+          "items": {"type": "string", "enum": ["RCAF", "RCAP", "RCGS", "RCSA"]},
+          "description": "Applicable certification levels"
+        },
+        "time_allocation": {
+          "type": "object",
+          "properties": {
+            "seconds": {"type": "integer", "minimum": 30, "maximum": 1800},
+            "recommended_seconds": {"type": "integer"},
+            "adaptive": {"type": "boolean", "default": false, "description": "Allow time adaptation based on user performance"}
+          },
+          "required": ["seconds"]
+        },
+        "points": {
+          "type": "object",
+          "properties": {
+            "base_points": {"type": "integer", "minimum": 1, "maximum": 20},
+            "bonus_conditions": {
+              "type": "array",
+              "items": {
+                "type": "object", 
+                "properties": {
+                  "condition": {"type": "string", "enum": ["time_bonus", "streak_bonus", "first_attempt"]},
+                  "bonus_points": {"type": "integer"}
+                }
+              }
+            }
+          },
+          "required": ["base_points"]
+        }
+      }
+    },
+    
+    "content": {
+      "type": "object",
+      "description": "Main question content - varies by question_format",
+      "anyOf": [
+        {"$ref": "#/definitions/single_choice_content"},
+        {"$ref": "#/definitions/multiple_choice_content"},
+        {"$ref": "#/definitions/true_false_content"},
+        {"$ref": "#/definitions/essay_content"},
+        {"$ref": "#/definitions/code_content"},
+        {"$ref": "#/definitions/case_study_content"},
+        {"$ref": "#/definitions/simulation_content"}
+      ]
+    },
+    
+    "explanation": {
+      "type": "object",
+      "properties": {
+        "correct_answer_explanation": {
+          "type": "string",
+          "maxLength": 1000,
+          "description": "Why the correct answer is right"
+        },
+        "incorrect_explanations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "option_id": {"type": "string"},
+              "explanation": {"type": "string", "maxLength": 500}
+            }
+          },
+          "description": "Why wrong answers are wrong"
+        },
+        "learning_resources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {"type": "string"},
+              "url": {"type": "string", "format": "uri"},
+              "type": {"type": "string", "enum": ["article", "video", "course", "documentation"]}
+            }
+          },
+          "maxItems": 5
+        }
+      }
+    },
+    
+    "business_context": {
+      "type": "object",
+      "properties": {
+        "real_world_application": {
+          "type": "string",
+          "maxLength": 800,
+          "description": "How this applies in business scenarios"
+        },
+        "industry_relevance": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Which industries find this most relevant"
+        },
+        "role_relevance": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Which job roles need this knowledge"
+        },
+        "impact_level": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "critical"],
+          "description": "Business impact of getting this wrong"
+        }
+      }
+    },
+    
+    "media": {
+      "type": "object",
+      "properties": {
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": {"type": "string", "format": "uri"},
+              "alt_text": {"type": "string"},
+              "caption": {"type": "string"},
+              "position": {"type": "string", "enum": ["before_question", "after_question", "in_options"]}
+            }
+          }
+        },
+        "videos": {
+          "type": "array",
+          "items": {
+            "type": "object", 
+            "properties": {
+              "url": {"type": "string", "format": "uri"},
+              "duration_seconds": {"type": "integer"},
+              "transcript": {"type": "string"},
+              "autoplay": {"type": "boolean", "default": false}
+            }
+          }
+        },
+        "audio": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": {"type": "string", "format": "uri"},
+              "transcript": {"type": "string"},
+              "duration_seconds": {"type": "integer"}
+            }
+          }
+        },
+        "interactive_elements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {"type": "string", "enum": ["iframe", "widget", "simulation", "demo"]},
+              "url": {"type": "string", "format": "uri"},
+              "config": {"type": "object"}
+            }
+          }
+        }
+      }
+    },
+    
+    "analytics": {
+      "type": "object",
+      "properties": {
+        "learning_objectives": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "What learners should achieve"
+        },
+        "prerequisite_knowledge": {
+          "type": "array", 
+          "items": {"type": "string"},
+          "description": "What learners need to know first"
+        },
+        "bloom_taxonomy_level": {
+          "type": "string",
+          "enum": ["remember", "understand", "apply", "analyze", "evaluate", "create"],
+          "description": "Cognitive level being tested"
+        },
+        "discrimination_index": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1,
+          "description": "How well this question separates high/low performers"
+        }
+      }
+    },
+    
+    "accessibility": {
+      "type": "object",
+      "properties": {
+        "screen_reader_text": {"type": "string"},
+        "keyboard_navigation": {"type": "boolean", "default": true},
+        "high_contrast_compatible": {"type": "boolean", "default": true},
+        "alternative_formats": {
+          "type": "array",
+          "items": {"type": "string", "enum": ["audio", "large_text", "simplified_language"]}
+        }
+      }
+    },
+    
+    "localization": {
+      "type": "object",
+      "properties": {
+        "primary_language": {"type": "string", "default": "en", "pattern": "^[a-z]{2}$"},
+        "translations": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z]{2}$": {
+              "type": "object",
+              "properties": {
+                "question_text": {"type": "string"},
+                "options": {"type": "array"},
+                "explanation": {"type": "object"}
+              }
+            }
+          }
+        },
+        "cultural_adaptations": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Cultural considerations for different regions"
+        }
+      }
+    },
+    
+    "status": {
+      "type": "object",
+      "properties": {
+        "active": {"type": "boolean", "default": true},
+        "archived": {"type": "boolean", "default": false},
+        "published": {"type": "boolean", "default": false},
+        "featured": {"type": "boolean", "default": false},
+        "experimental": {"type": "boolean", "default": false}
+      }
+    }
+  },
+  
+  "definitions": {
+    "single_choice_content": {
+      "type": "object",
+      "required": ["options", "correct_answer"],
+      "properties": {
+        "options": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "required": ["id", "text"],
+            "properties": {
+              "id": {"type": "string", "pattern": "^[A-H]$"},
+              "text": {"type": "string", "maxLength": 500},
+              "image_url": {"type": "string", "format": "uri"},
+              "explanation": {"type": "string", "maxLength": 300}
+            }
+          }
+        },
+        "correct_answer": {
+          "type": "object",
+          "required": ["option_id"],
+          "properties": {
+            "option_id": {"type": "string", "pattern": "^[A-H]$"},
+            "explanation": {"type": "string", "maxLength": 800}
+          }
+        },
+        "randomize_options": {"type": "boolean", "default": true}
+      }
+    },
+    
+    "multiple_choice_content": {
+      "type": "object", 
+      "required": ["options", "correct_answers"],
+      "properties": {
+        "options": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 10,
+          "items": {
+            "type": "object",
+            "required": ["id", "text"],
+            "properties": {
+              "id": {"type": "string", "pattern": "^[A-J]$"},
+              "text": {"type": "string", "maxLength": 500},
+              "image_url": {"type": "string", "format": "uri"}
+            }
+          }
+        },
+        "correct_answers": {
+          "type": "array",
+          "minItems": 2,
+          "items": {"type": "string", "pattern": "^[A-J]$"},
+          "description": "Multiple correct option IDs"
+        },
+        "min_selections": {"type": "integer", "minimum": 1},
+        "max_selections": {"type": "integer", "minimum": 2},
+        "partial_credit": {"type": "boolean", "default": true}
+      }
+    },
+    
+    "true_false_content": {
+      "type": "object",
+      "required": ["correct_answer"],
+      "properties": {
+        "correct_answer": {"type": "boolean"},
+        "statement_variations": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Alternative ways to phrase the statement"
+        }
+      }
+    },
+    
+    "essay_content": {
+      "type": "object",
+      "properties": {
+        "min_words": {"type": "integer", "minimum": 50, "default": 100},
+        "max_words": {"type": "integer", "maximum": 2000, "default": 500},
+        "rubric": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "criterion": {"type": "string"},
+              "description": {"type": "string"},
+              "points": {"type": "integer"}
+            }
+          }
+        },
+        "sample_answer": {"type": "string", "maxLength": 1500},
+        "keywords": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Key terms expected in good answers"
+        }
+      }
+    },
+    
+    "code_content": {
+      "type": "object",
+      "required": ["language"],
+      "properties": {
+        "language": {"type": "string", "enum": ["python", "javascript", "sql", "pseudocode", "json", "yaml"]},
+        "initial_code": {"type": "string"},
+        "solution_code": {"type": "string"},
+        "test_cases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "input": {"type": "string"},
+              "expected_output": {"type": "string"},
+              "description": {"type": "string"}
+            }
+          }
+        },
+        "code_style_requirements": {"type": "array", "items": {"type": "string"}},
+        "forbidden_functions": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    
+    "case_study_content": {
+      "type": "object",
+      "required": ["scenario"],
+      "properties": {
+        "scenario": {
+          "type": "object",
+          "properties": {
+            "title": {"type": "string"},
+            "company_background": {"type": "string"},
+            "situation_description": {"type": "string"},
+            "stakeholders": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {"type": "string"},
+                  "role": {"type": "string"},
+                  "perspective": {"type": "string"}
+                }
+              }
+            },
+            "data_provided": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {"type": "string", "enum": ["table", "chart", "document", "image"]},
+                  "content": {"type": "string"},
+                  "source": {"type": "string"}
+                }
+              }
+            }
+          }
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question": {"type": "string"},
+              "question_type": {"type": "string", "enum": ["analysis", "recommendation", "calculation", "priority"]},
+              "expected_approach": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    
+    "simulation_content": {
+      "type": "object",
+      "required": ["simulation_type", "config"],
+      "properties": {
+        "simulation_type": {"type": "string", "enum": ["interactive_demo", "virtual_environment", "data_analysis", "decision_tree"]},
+        "config": {
+          "type": "object",
+          "properties": {
+            "simulation_url": {"type": "string", "format": "uri"},
+            "parameters": {"type": "object"},
+            "success_criteria": {"type": "array", "items": {"type": "string"}},
+            "time_limit_seconds": {"type": "integer"},
+            "attempts_allowed": {"type": "integer", "default": 3}
+          }
+        },
+        "scoring": {
+          "type": "object",
+          "properties": {
+            "completion_points": {"type": "integer"},
+            "efficiency_bonus": {"type": "integer"},
+            "accuracy_multiplier": {"type": "number"}
+          }
+        }
+      }
+    }
+  }
+}

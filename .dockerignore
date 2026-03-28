@@ -1,0 +1,42 @@
+# Keep the Docker build context as small as possible by ignoring unnecessary files.
+# This prevents uploading gigabytes of data (like node_modules) to the Docker daemon.
+
+# Ignore dependencies since we will run 'npm install' inside the Docker container
+node_modules
+.pnp
+.pnp.js
+
+# Ignore Next.js build artifacts from your local machine
+# We want the container to build Next.js from scratch in its own environment
+.next/
+out/
+build/
+
+# NEVER copy environment variables into the Docker image!
+# This is a critical security rule. Secrets should be injected at runtime.
+.env
+.env.*
+!.env.example # It's okay to copy the example file as it doesn't contain real secrets
+
+# Ignore Git history to save space and prevent source control metadata leakage
+.git
+.github
+.gitignore
+
+# Ignore local testing and coverage reports
+coverage/
+__tests__/
+vitest.config.ts
+
+# Ignore documentation, markdown files, and logs that the app doesn't need to run
+docs/
+context/
+README.md
+*.md
+*.log
+
+# Ignore local development tooling
+.vscode/
+.idea/
+.dockerignore
+Dockerfile

@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# SEO-friendly pages
+Allow: /
+Allow: /pricing
+Allow: /auth/login
+Allow: /auth/signup
+
+# Block private/internal pages
+Disallow: /dashboard
+Disallow: /results/
+Disallow: /subscription
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://readycheck.ai/sitemap.xml

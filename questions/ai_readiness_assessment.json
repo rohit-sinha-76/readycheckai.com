@@ -1,0 +1,274 @@
+{
+  "ai_readiness_assessment": [
+    {
+      "id": "f1",
+      "category": "fundamentals",
+      "difficulty": "beginner",
+      "question": "Which statement best describes Artificial Intelligence (AI) in a business context?",
+      "options": [
+        "A computer program that can think and feel exactly like a human.",
+        "The simulation of human intelligence in machines to perform tasks.",
+        "A type of hardware that makes computers run faster.",
+        "A system that can only analyze numbers and spreadsheets."
+      ],
+      "correct": 1,
+      "explanation": "AI is broadly defined as the theory and development of computer systems able to perform tasks that normally require human intelligence. This includes functions like learning, problem-solving, and pattern recognition, not replicating human consciousness.",
+      "business_context": "Understanding this core definition helps professionals identify which business challenges, like automating repetitive tasks or analyzing customer data, are suitable for an AI solution."
+    },
+    {
+      "id": "f2",
+      "category": "fundamentals",
+      "difficulty": "beginner",
+      "question": "What is the relationship between AI, Machine Learning (ML), and Deep Learning (DL)?",
+      "options": [
+        "They are three separate, unrelated technologies.",
+        "AI is a type of ML, which is a type of DL.",
+        "ML is a subset of AI, and DL is a specialized subset of ML.",
+        "AI and ML are the same; DL is a more advanced version."
+      ],
+      "correct": 2,
+      "explanation": "Artificial Intelligence (AI) is the overall field. Machine Learning (ML) is a subfield of AI that uses data to learn without being explicitly programmed. Deep Learning (DL) is a further specialization of ML that uses complex neural networks.",
+      "business_context": "Knowing this hierarchy helps professionals understand discussions about AI projects. A request for a 'Deep Learning solution' implies a more complex, data-intensive project than a general 'AI' feature."
+    },
+    {
+      "id": "f3",
+      "category": "fundamentals",
+      "difficulty": "intermediate",
+      "question": "Your company's spam filter is an example of what type of AI?",
+      "options": [
+        "Artificial General Intelligence (AGI)",
+        "Artificial Superintelligence (ASI)",
+        "Sentient AI",
+        "Narrow AI (ANI)"
+      ],
+      "correct": 3,
+      "explanation": "Narrow AI (Artificial Narrow Intelligence) is designed to perform a single specific task, such as filtering emails or playing chess. All AI in existence today is Narrow AI. AGI and ASI are theoretical concepts that do not yet exist.",
+      "business_context": "This distinction is crucial for setting realistic expectations. Business professionals should know that current AI tools are specialists designed for specific problems, not general-purpose thinkers."
+    },
+    {
+      "id": "f4",
+      "category": "fundamentals",
+      "difficulty": "intermediate",
+      "question": "Which business task is a common and effective application for predictive AI?",
+      "options": [
+        "Writing a creative company mission statement.",
+        "Forecasting next quarter's sales based on historical data.",
+        "Designing a new company logo from scratch.",
+        "Holding a performance review conversation with an employee."
+      ],
+      "correct": 2,
+      "explanation": "Predictive AI excels at identifying patterns in historical data to forecast future outcomes. Sales forecasting, customer churn prediction, and inventory management are classic use cases.",
+      "business_context": "Recognizing where predictive AI can be applied allows professionals to identify opportunities to make data-driven decisions and improve operational efficiency."
+    },
+    {
+      "id": "f5",
+      "category": "fundamentals",
+      "difficulty": "beginner",
+      "question": "In the workplace, what does the term 'Generative AI' primarily refer to?",
+      "options": [
+        "AI that generates financial reports.",
+        "AI that creates new content, like text, images, or code.",
+        "AI that generates electricity for data centers.",
+        "AI that generates employee schedules automatically."
+      ],
+      "correct": 1,
+      "explanation": "Generative AI refers to models that can create novel content. This includes writing emails (like ChatGPT), creating marketing images (like Midjourney), or producing code.",
+      "business_context": "Understanding this term is essential, as 'GenAI' is transforming content creation, marketing, and software development, offering new tools for productivity and creativity."
+    },
+    {
+      "id": "p1",
+      "category": "practical",
+      "difficulty": "beginner",
+      "question": "What is the most important first step for getting a useful response from an AI like ChatGPT?",
+      "options": [
+        "Writing the longest prompt possible.",
+        "Using highly technical jargon.",
+        "Providing clear context and a specific instruction.",
+        "Asking the AI about its personal opinions."
+      ],
+      "correct": 2,
+      "explanation": "The quality of AI output is highly dependent on the quality of the input (prompt). Providing clear context, defining the desired format, and stating the specific goal are key to getting a relevant and useful response.",
+      "business_context": "Effective 'prompt engineering' is a new, critical skill. A well-crafted prompt saves time, reduces errors, and yields better results, whether drafting a sales email or summarizing a report."
+    },
+    {
+      "id": "p2",
+      "category": "practical",
+      "difficulty": "beginner",
+      "question": "An AI tool producing a confident but factually incorrect statement is known as a(n):",
+      "options": [
+        "Bug",
+        "Feature",
+        "Hallucination",
+        "System crash"
+      ],
+      "correct": 2,
+      "explanation": "A 'hallucination' is a common limitation where a generative AI model produces false information but presents it as factual. It's a key reason why all AI-generated content must be fact-checked.",
+      "business_context": "Awareness of hallucinations is vital for risk management. Professionals must verify any data, statistics, or factual claims generated by AI before using them in reports, presentations, or client communications."
+    },
+    {
+      "id": "p3",
+      "category": "practical",
+      "difficulty": "intermediate",
+      "question": "You have a 50-page PDF report and need to quickly identify the main findings. What is the best approach?",
+      "options": [
+        "Manually read the entire document word-for-word.",
+        "Copy and paste the text into a basic text editor.",
+        "Use an AI chat tool capable of analyzing documents to summarize it.",
+        "Ask a colleague who has not read the report for their opinion."
+      ],
+      "correct": 2,
+      "explanation": "Many modern AI tools (like Claude, or ChatGPT with plugins) can process large documents and provide concise summaries, extract key points, or answer specific questions about the content. This is a primary use case for improving productivity.",
+      "business_context": "Leveraging AI for information synthesis saves significant time and allows professionals to quickly grasp the essence of long reports, research papers, or meeting transcripts, accelerating decision-making."
+    },
+    {
+      "id": "p4",
+      "category": "practical",
+      "difficulty": "intermediate",
+      "question": "When should you AVOID using a public generative AI tool like ChatGPT or Gemini?",
+      "options": [
+        "When brainstorming ideas for a marketing campaign.",
+        "When drafting a non-confidential internal announcement.",
+        "When summarizing a publicly available news article.",
+        "When analyzing a spreadsheet containing sensitive customer data."
+      ],
+      "correct": 3,
+      "explanation": "You should never input proprietary, confidential, or personally identifiable information (PII) into public AI tools. These platforms may use your input data for training, creating significant privacy and security risks.",
+      "business_context": "Protecting company and customer data is paramount. Employees must be trained to recognize what information is sensitive and should never be shared with public AI models to prevent data breaches."
+    },
+    {
+      "id": "p5",
+      "category": "practical",
+      "difficulty": "intermediate",
+      "question": "To make an AI's written output sound more like your company's official brand voice, what should you include in your prompt?",
+      "options": [
+        "The word 'please'.",
+        "Examples of your company's writing style or a persona.",
+        "A request for the AI to use complex vocabulary.",
+        "A note that the output is urgent."
+      ],
+      "correct": 1,
+      "explanation": "Providing a persona ('Act as a friendly but professional marketing manager') or specific examples of desired text ('Here is an example of our brand voice...') is a key prompt engineering technique to guide the AI's tone, style, and format.",
+      "business_context": "Maintaining a consistent brand voice is crucial for marketing and communications. Using personas and examples in prompts helps ensure that AI-generated content aligns with the company's branding guidelines."
+    },
+    {
+      "id": "p6",
+      "category": "practical",
+      "difficulty": "advanced",
+      "question": "When comparing major AI chat tools (like Gemini, ChatGPT, Claude), what is a key differentiating factor for business use?",
+      "options": [
+        "The color of their user interface.",
+        "Their 'context window' size, affecting how much information they can remember.",
+        "The physical location of their servers.",
+        "Whether they work on a Mac or a PC."
+      ],
+      "correct": 1,
+      "explanation": "The 'context window' refers to the amount of text (both input and output) the model can consider at one time. A larger context window is better for summarizing long documents or maintaining long, complex conversations, a key differentiator for advanced business tasks.",
+      "business_context": "For professionals working with large reports or complex multi-turn conversations, choosing a tool with a larger context window (like Claude often has) can significantly improve performance and prevent the AI from 'forgetting' earlier parts of the interaction."
+    },
+    {
+      "id": "b1",
+      "category": "business",
+      "difficulty": "beginner",
+      "question": "Which of these business problems is most suitable for an AI solution?",
+      "options": [
+        "Defining the company's core ethical values.",
+        "Building personal relationships with key clients.",
+        "Categorizing thousands of customer support tickets by topic.",
+        "Deciding on a new company name."
+      ],
+      "correct": 2,
+      "explanation": "AI excels at tasks that are repetitive, data-driven, and follow predictable patterns at scale. Categorizing support tickets is a classic classification task that AI can perform quickly and accurately, freeing up human agents for more complex issues.",
+      "business_context": "Identifying the right use cases is the first step in a successful AI strategy. Focusing on high-volume, repetitive tasks often yields the quickest and most significant return on investment."
+    },
+    {
+      "id": "b2",
+      "category": "business",
+      "difficulty": "beginner",
+      "question": "In most AI projects, what activity often requires the most time and resources?",
+      "options": [
+        "Writing the final report.",
+        "Choosing the AI model's name.",
+        "Gathering, cleaning, and labeling data.",
+        "Designing the user interface colors."
+      ],
+      "correct": 2,
+      "explanation": "The 'garbage in, garbage out' principle is critical in AI. The performance of any AI system is fundamentally dependent on the quality of the data it's trained on. Data collection, cleaning, and preparation often consume up to 80% of the project timeline.",
+      "business_context": "Business leaders must understand that AI is not a magic plug-and-play solution. Successful implementation requires a significant upfront investment in ensuring high-quality, well-structured data."
+    },
+    {
+      "id": "b3",
+      "category": "business",
+      "difficulty": "intermediate",
+      "question": "What is a primary metric to measure the Return on Investment (ROI) of an AI chatbot for customer service?",
+      "options": [
+        "The number of emojis the chatbot uses.",
+        "The average time the development team spends in meetings.",
+        "Reduction in human agent workload and customer wait times.",
+        "The physical size of the servers running the AI."
+      ],
+      "correct": 2,
+      "explanation": "The business value of a customer service AI is measured by its efficiency and effectiveness. Key metrics include deflected support tickets (reducing human workload), faster resolution times, and improved customer satisfaction scores (CSAT).",
+      "business_context": "To justify AI investments, professionals must focus on tangible business metrics. Tying AI performance to outcomes like cost savings, revenue growth, or efficiency gains is essential for proving its value."
+    },
+    {
+      "id": "b4",
+      "category": "business",
+      "difficulty": "intermediate",
+      "question": "What is the most critical element of change management when introducing AI tools to a team?",
+      "options": [
+        "Keeping the project a secret until the launch day.",
+        "Focusing only on how the AI will replace jobs.",
+        "Providing clear communication and training on how the AI helps employees.",
+        "Mandating use of the tool without explaining its purpose."
+      ],
+      "correct": 2,
+      "explanation": "Successful AI adoption depends on user buy-in. It's crucial to communicate transparently, frame the AI as a tool to augment (not replace) employees, and provide comprehensive training to build confidence and skills.",
+      "business_context": "Fear and resistance can derail any technology implementation. A strong change management plan that addresses employee concerns and highlights benefits is just as important as the technology itself."
+    },
+    {
+      "id": "b5",
+      "category": "business",
+      "difficulty": "advanced",
+      "question": "Your team wants to use an AI tool to screen resumes. What is a primary business risk to mitigate?",
+      "options": [
+        "The AI might screen resumes too quickly.",
+        "The AI might recommend too many qualified candidates.",
+        "The AI might perpetuate historical biases from past hiring data.",
+        "The AI might cost too much to operate."
+      ],
+      "correct": 2,
+      "explanation": "If an AI is trained on historical resume data that contains unconscious biases (e.g., favoring candidates from certain schools or demographics), it will learn and amplify those biases. This creates significant legal, ethical, and reputational risks.",
+      "business_context": "When deploying AI in high-stakes areas like HR, finance, or legal, professionals must proactively assess and mitigate the risk of algorithmic bias to ensure fair and compliant outcomes."
+    },
+    {
+      "id": "e1",
+      "category": "ethics",
+      "difficulty": "beginner",
+      "question": "What is the single most important data privacy rule for employees using public AI tools?",
+      "options": [
+        "Only use the AI during work hours.",
+        "Always say 'please' and 'thank you' to the AI.",
+        "Do not input any sensitive personal or company information.",
+        "Share successful outputs with the entire company."
+      ],
+      "correct": 2,
+      "explanation": "Public AI models are not secure, private environments. Any data entered can potentially be seen by developers or used for training future models, making it a major security risk for confidential information.",
+      "business_context": "A single employee pasting sensitive client data or a trade secret into a public AI tool can create a massive data breach. A clear, strict policy against this is a fundamental part of any company's AI governance."
+    },
+    {
+      "id": "e2",
+      "category": "ethics",
+      "difficulty": "intermediate",
+      "question": "An AI model used for loan approvals denies applicants from a specific neighborhood at a high rate. This is likely an example of:",
+      "options": [
+        "A well-functioning, objective system.",
+        "Algorithmic bias from biased training data.",
+        "A random computer error.",
+        "A feature designed to improve bank profits."
+      ],
+      "correct": 1,
+      "explanation": "This pattern is a classic sign of algorithmic bias. The AI likely learned from historical loan data that contained societal biases, and it is now replicating those biased patterns in its decisions, leading to discriminatory outcomes.",
+      "business_context": "Understanding and identifying potential AI bias is a critical ethical and legal responsibility. Businesses using AI for important decisions must have processes to audit for fairness and ensure their tools do not produce discriminatory results."
+    }
+  ]
+}
