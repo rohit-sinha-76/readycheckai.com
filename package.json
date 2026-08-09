@@ -1,8 +1,8 @@
 {
     "$schema":  "https://json.schemastore.org/package",
     "name":  "readycheckai",
-    "version":  "1.0.0",
-    "description":  "",
+    "version":  "1.1.0",
+    "description":  "AI-assisted technical skill assessment, structured career roadmap generation, and verifiable credentialing platform.",
     "main":  "index.js",
     "scripts":  {
                     "test":  "vitest",
@@ -12,17 +12,21 @@
                     "build":  "next build",
                     "start":  "next start",
                     "lint":  "eslint src",
-                    "deploy:staging":  "node scripts/deploy.js staging",
-                    "deploy:production":  "node scripts/deploy.js production",
-                    "analyze":  "ANALYZE=true npm run build",
-                    "db:migrate":  "node execute-migrations.js",
-                    "db:check":  "node execute-migrations.js --check-only"
+                    "analyze":  "ANALYZE=true npm run build"
                 },
     "keywords":  [
-
+                    "nextjs",
+                    "react19",
+                    "typescript",
+                    "supabase",
+                    "gemini-ai",
+                    "razorpay",
+                    "skill-assessment",
+                    "career-roadmap",
+                    "verifiable-credentials"
                  ],
-    "author":  "",
-    "license":  "ISC",
+    "author":  "rohit sinha <rohitsinha0311@gmail.com>",
+    "license":  "MIT",
     "type":  "module",
     "dependencies":  {
                          "@google/generative-ai":  "^0.24.1",
