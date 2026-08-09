@@ -3,7 +3,7 @@
 > AI-assisted technical skill assessment, structured career roadmap generation, and verifiable credentialing platform built with Next.js 16, Supabase, Gemini AI, and Razorpay.
 
 [![CI Pipeline](https://img.shields.io/badge/CI-Passing-brightgreen?style=flat-square&logo=githubactions&logoColor=white)](.github/workflows/ci.yml)
-[![Tests](https://img.shields.io/badge/Tests-250%20passed-brightgreen?style=flat-square&logo=vitest&logoColor=white)](src/__tests__/)
+[![Tests](https://img.shields.io/badge/Tests-260%20passed-brightgreen?style=flat-square&logo=vitest&logoColor=white)](src/__tests__/)
 [![Next.js](https://img.shields.io/badge/Next.js-16.2-black?style=flat-square&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)

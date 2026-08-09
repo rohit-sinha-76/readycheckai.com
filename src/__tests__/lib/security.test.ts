@@ -182,6 +182,32 @@ describe('Security Utilities - src/lib/security.ts', () => {
     })
   })
 
+  describe('Client IP Extraction - Extended Branches', () => {
+    it('should extract x-real-ip when cf-connecting-ip is absent', () => {
+      const req = new NextRequest('https://example.com/api', {
+        headers: {
+          'x-real-ip': '192.168.1.100'
+        }
+      })
+      expect(getClientIP(req)).toBe('192.168.1.100')
+    })
+
+    it('should fallback to unknown when no IP headers exist', () => {
+      const req = new NextRequest('https://example.com/api')
+      expect(getClientIP(req)).toBe('unknown')
+    })
+  })
+
+  describe('DDoS Protection - Pattern Checks', () => {
+    it('should detect various attack and scraper patterns', () => {
+      expect(DDoSProtection.isSuspiciousUserAgent('Mozilla/5.0 Googlebot/2.1')).toBe(true)
+      expect(DDoSProtection.isSuspiciousUserAgent('Wget/1.20.3 (linux-gnu)')).toBe(true)
+      expect(DDoSProtection.isSuspiciousUserAgent('Go-http-client/1.1')).toBe(true)
+      expect(DDoSProtection.isSuspiciousUserAgent('sql-inject-tool/1.0')).toBe(true)
+      expect(DDoSProtection.isSuspiciousUserAgent('Java/1.8.0_202')).toBe(true)
+    })
+  })
+
   describe('User Agent Extraction', () => {
     it('should extract user-agent header or fallback', () => {
       const req = new NextRequest('https://example.com/api', {

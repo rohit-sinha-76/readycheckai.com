@@ -308,8 +308,11 @@ describe('AssessmentEngine', () => {
       />
     )
 
-    // Advance time and answer question
-    vi.advanceTimersByTime(30000) // 30 seconds
+    // Advance time and answer question wrapped in act
+    await act(async () => {
+      vi.advanceTimersByTime(30000) // 30 seconds
+    })
+    
     await act(async () => {
       fireEvent.click(screen.getByText('Artificial Intelligence'))
     })
